@@ -27,11 +27,11 @@ class AuthController extends Controller
             
             if(Auth::user()->type == "admin")
                 
-                return redirect('dashboard')
+                return redirect('admin/dashboard')
                         // ->intended('dashboard')
                         ->with('SUCCESS','Signed in');
             
-            return redirect('home')
+            return redirect('user/home')
                         // ->intended('dashboard')
                         ->with('SUCCESS','Signed in');
         }

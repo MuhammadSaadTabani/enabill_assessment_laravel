@@ -13,7 +13,7 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid col-md-6">
     <div class="card card-warning">
         <div class="card-header">
           <h3 class="card-title">Drop your Query</h3>

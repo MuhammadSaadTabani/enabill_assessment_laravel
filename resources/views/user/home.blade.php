@@ -2,7 +2,7 @@
 
 @section('title', 'Dashboard')
 
-@section('page_heading', 'Dashboard')
+@section('page_heading', '')
 
 @section('breadcrumb')
     <ol class="breadcrumb float-sm-right">

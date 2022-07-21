@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ryde Promo - Admin @yield('title')</title>
+  <title>Enabill - Admin @yield('title')</title>
 
   <meta name="csrf-token" content="{{ csrf_token() }}" />
   <!-- Google Font: Source Sans Pro -->
@@ -115,30 +115,16 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{url('category')}}" class="nav-link">
+            <a href="{{url('admin/users')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
-              <p>Categories</p>
+              <p>Users</p>
             </a>
           </li>
 
           <li class="nav-item">
-            <a href="{{url('admin/feature')}}" class="nav-link">
+            <a href="{{url('admin/queries')}}" class="nav-link">
               <i class="nav-icon far fa-plus-square"></i>
-              <p>Features</p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="{{url('admin/user/vendor')}}" class="nav-link">
-              <i class="nav-icon fa fa-industry"></i>
-              <p>Vendor list</p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="{{url('admin/user/driver')}}" class="nav-link">
-              <i class="nav-icon fa fa-truck"></i>
-              <p>Driver list</p>
+              <p>Queries</p>
             </a>
           </li>
 

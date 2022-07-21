@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,24 +21,25 @@ Route::post('login', [AuthController::class, 'postLogin']);
 Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('register', [AuthController::class, 'postRegister'])->name('postRegister');
 
-Route::prefix('user')->group(function(){
-    Route::get('/home', function(){
-        return view('user.home');
-    });
-    Route::get('/query', function(){
-        return view('user.query');
-    });
-    Route::post('/query', [UserController::class, 'query']);
-    
-    Route::get('/subscription', function(){
-        return view('user.subscription');
-    });
+Route::controller(UserController::class)
+    ->prefix('user')
+    ->group(function(){
+        Route::get('/home', 'home');
+        Route::get('/query', 'query');
+        Route::post('/query', 'postQuery');
+        Route::get('/subscription', 'subscription');
+        
+        Route::get('/logout', [UserController::class, 'logout']);
 });
 
 Route::prefix('admin')->group(function(){
     Route::get('/dashboard', function(){
         return view('admin.dashboard');
     });
+    
+
+
+    Route::get('/logout', [AdminController::class, 'logout']);
 });
 
 
