@@ -22,7 +22,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('isDeleted')->default(false);
-            $table->rememberToken()->nullable();;
+            $table->rememberToken()->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

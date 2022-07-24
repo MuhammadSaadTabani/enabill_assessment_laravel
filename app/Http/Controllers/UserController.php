@@ -7,6 +7,7 @@ use App\Models\Query;
 use App\Models\User;
 use App\Models\Connections;
 use App\Models\Subscription;
+use App\Models\Friendship;
 use Auth;
 
 class UserController extends Controller
@@ -19,7 +20,10 @@ class UserController extends Controller
     }
     public function home(){
         $users = User::whereNotIn('id',[Auth::user()->id, 1])->paginate(5);
-        return view('user.home', compact('users'));
+        $friendsArr = Auth::user()->friends->toArray();
+        // return $friends;
+        $friendsID = array_column($friendsArr, 'id');
+        return view('user.home', compact('users', 'friendsID'));
     }
     public function query(){
 
@@ -32,11 +36,14 @@ class UserController extends Controller
         return view('user.subscription', compact('subscription'));
     }
     public function connect($id){
-        Connections::create([
-            'user_id' => Auth::user()->id,
-            'connection_user_id' => $id
+        // return $id;
+        Friendship::create([
+            'first_user' => Auth::user()->id,
+            'second_user' => $id,
+            'acted_user' => Auth::user()->id,
+            'status' => 'confirmed'
         ]);
-        // return redirect
+        return back();
         // return view('user.subscription');
     }
 

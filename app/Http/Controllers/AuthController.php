@@ -14,6 +14,13 @@ class AuthController extends Controller
 {
     //
     public function login(){
+        if(Auth::check()){
+            if(Auth::user()->type == 'user'){
+                return redirect('/user/home');
+            }else{
+                return redirect('/admin/users');
+            }
+        }
         return view('login');
     }
     public function postLogin (Request $request) {

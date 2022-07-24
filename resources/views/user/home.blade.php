@@ -42,7 +42,13 @@
                       <td>
                         {{$user->email}}
                       </td>
-                      <td><a class="btn btn-primary" href='{{url('user/connect').'/'.$user->id }}'>Connect</a></td>
+                      <td>
+                        @if(in_array($user->id, $friendsID))
+                          <a class="btn btn-primary" href='javascript:;'>Connected</a>
+                        @else
+                          <a class="btn btn-primary" href='{{url('user/connect/'.$user->id) }}'>Connect</a>
+                        @endif
+                      </td>
                     </tr>
                   @endforeach
                  

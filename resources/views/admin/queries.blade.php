@@ -55,9 +55,9 @@
                 <td>{{$row->created_at}}</td>
                 <td>
                   <select class="form-select" aria-label="Change Status">
-                    <option value="Pending">Pending</option>
-                    <option value="Resolved">Resolve</option>
-                    <option value="Rejected">Reject</option>
+                    <option {{$row->status == "pending"  ? 'selected' : ''}} value="Pending">Pending</option>
+                    <option {{$row->status == "resolved"  ? 'selected' : ''}} value="Resolved">Resolve</option>
+                    <option {{$row->status == "rejected"  ? 'selected' : ''}} value="Rejected">Reject</option>
                   </select>
                 </td>
               </tr>

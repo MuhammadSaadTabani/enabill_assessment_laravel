@@ -17,7 +17,7 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', [AuthController::class, 'login']);
-Route::get('login', [AuthController::class, 'login']);
+// Route::get('login', [AuthController::class, 'login']);
 Route::post('login', [AuthController::class, 'postLogin']);
 Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('register', [AuthController::class, 'postRegister'])->name('postRegister');
@@ -36,11 +36,14 @@ Route::controller(UserController::class)
 });
 
 Route::controller(AdminController::class)
+    ->middleware('auth')
     ->prefix('admin')
     ->group(function(){
         Route::get('/users', 'users');
-        Route::get('/admin/userDelete/{id}', 'deleteUser');
+        Route::get('/user-delete/{id}', 'deleteUser');
         Route::get('/queries', 'queries');
+        Route::post('/add-user', 'addUser');
+        Route::get('/update-query-status/{id}', 'updateQueryStatus');
         Route::get('/logout', [AdminController::class, 'logout']);
 });
 

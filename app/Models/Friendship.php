@@ -5,18 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Query extends Model
+class Friendship extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'query',
-        'user_id',
-        'status'
-    ];
 
-    public function user (){
-        return $this->belongsTo(User::class, 'user_id');
-    }
+    protected $fillable = [
+        'first_user',
+        'second_user',
+        'acted_user',
+        'status',
+    ];
 
 }

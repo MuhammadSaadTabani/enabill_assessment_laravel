@@ -16,6 +16,68 @@
 
 
 <div class="container-fluid">
+  <div class="card card-warning">
+    <div class="card-header">
+      <h3 class="card-title">Add New User</h3>
+    </div>
+    <!-- /.card-header -->
+    <form method="POST" action="{{url('admin/add-user')}}">
+        @csrf
+    <div class="card-body">
+        <div class="row">
+          <div class="col-sm-6">
+            <!-- text input -->
+            <div class="form-group">
+              <label>First Name</label>
+              <input required type="text" class="form-control  @error('fname') is-invalid @enderror"  name="fname" placeholder="Enter First Name" value="{{ old('fname') }}">
+              @error('fname')
+                <div class="row col-12">
+                      <span class="text-danger">{{ $message }}</span>
+                </div>
+              @enderror
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input  required type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter Password">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Last Name</label>
+              <input required type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" placeholder="Enter Last Name" value="{{ old('lname') }}">
+              
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input required type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter Email Address" value="{{ old('email') }}">
+              @error('email')
+                <div class="row col-12">
+                      <span class="text-danger">{{ $message }}</span>
+                </div>
+              @enderror
+            </div>
+          </div>
+        </div>
+        <div class="row">
+        </div>
+
+       
+    </div>
+    
+    <div class="card-footer">
+        <button type="submit" class="btn btn-info btn-block">Add</button>
+    </div>
+    
+    </form>
+
+    <!-- /.card-body -->
+  </div>
+
+
+
+
+
+
 
   <section class="content">
     <div class="container-fluid">
@@ -44,7 +106,7 @@
                       <td>
                         {{$user->email}}
                       </td>
-                      <td><a class="btn btn-danger" href='{{url('/admin/userDelete/3').$user->id }}'>Delete</a></td>
+                      <td><a class="btn btn-danger" href='{{url('admin/user-delete/'.$user->id) }}'>Delete</a></td>
                     </tr>
                   @endforeach
                  
